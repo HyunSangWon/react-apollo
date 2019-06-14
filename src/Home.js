@@ -6,9 +6,11 @@ const Home = () => <Query query={HOME_PAGE}>{({ loading, data, error})=>{
     if(loading) return <span>loading</span>
     if(error) return <span>something happened</span>
     if(data){
-        console.log(data);
-        return <span>yay</span>
-    }
+        return data.movies.map((index) =>
+            <h3 key={index.id}>
+                {index.title} / {index.rating}
+            </h3>
+        )}
 }}</Query>
 
 export default Home;
